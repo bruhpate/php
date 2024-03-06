@@ -17,9 +17,10 @@ if (isset($_SESSION["UTENTE"])) {
     }
     
         if(count($_POST)>0){
-            $sql = "INSERT INTO dbmsutenti (nome, password) VALUES ('$_POST[nome]',hash('sha256', $_POST[password])";
+            $password1=hash('sha256', $_POST['pw']);
+            $sql = "INSERT INTO dbmsutenti (nome, password) VALUES ('$_POST[nome]','$password1')";
             if ($conn->query($sql) === TRUE) {
-                echo "New record created successfully";
+                echo "<script type='text/javascript'>alert('Aggiunto correttamente');</script>";
                 header("Refresh:0");
               } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;

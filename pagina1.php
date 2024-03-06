@@ -14,8 +14,9 @@ if (isset($_SESSION["UTENTE"])) {
                 <a href="film.php"><button>Film</button></a>
                 <a href="utente.php"><button>Utente</button></a>
                 <a href="partecipazione.php"><button>Partecipazione</button></a>
-            <h1>Aggiungi utente:</h1>
+            <h1>Impostazioni:</h1>
                 <a href="aggiungi-utente.php"><button>Aggiungi utente</button></a>
+                <a href="login.php"><button>Logout</button></a>
         </body>
      </html>';
 } else {

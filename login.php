@@ -29,10 +29,10 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["UTENTE"] = $_REQUEST["nome"];
     $username = $_POST['nome'];
-    $password = $_POST['password'];
+    $password = hash('sha256', $_POST['password']);
 
-    // Query per verificare il nome utente e la password
-    $sql = "SELECT * FROM dbmsutenti WHERE nome='$username' AND password='SHA1($password)'";
+    // Query per verificare il nome utente e la password user:pietro pw:matteo
+    $sql = "SELECT * FROM dbmsutenti WHERE nome='$username' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Login</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label>Nome utente:</label>
+    <label>Nome utente (pietro):</label>
     <input type="text" name="nome" required><br><br>
-    <label>Password:</label>
+    <label>Password: (matteo)</label>
     <input type="password" name="password" required><br><br>
     <input type="submit" value="Login">
 </form>
